@@ -120,8 +120,8 @@ class BookController extends BaseController {
 		}
 		//$books=$this->getBooksFromSearchUsingTitle($description,$search);
 		
-		return $books;
-		// return View::make('books',array('books'=>$books));
+		// return $books;
+		return View::make('books',array('books'=>$books));
 	}
 	public function getBooksByTitle($description,$search) {
 		$books=DB::table('books')
@@ -135,15 +135,19 @@ class BookController extends BaseController {
 					return $books;
 	}
 	public function getBooksByAuthor($description) {
-			$books=DB::table('books')
-							->leftJoin('authored_by','books.ISBN','=','authored_by.ISBN')
-							->leftJoin('authors','authored_by.id','=','authors.id')
-							->whereRaw("CONCAT(authors.first_name,' ',authors.last_name) LIKE '%"."Mark"."%'")
-							// ->orWhereRaw("CONCAT(authors.last_name,' ',authors.first_name) LIKE '%".$description."%'")
-							// ->orWhereRaw("CONCAT(authors.last_name,',',authors.first_name) LIKE '%".$description."%'")
-							// ->groupBy('books.title')
-							// ->orderBy('book.title','desc')
-							->get();
+			// $books=DB::table('books')
+			// 				->leftJoin('authored_by','books.ISBN','=','authored_by.ISBN')
+			// 				->leftJoin('authors','authored_by.id','=','authors.id')
+			// 				// ->whereRaw("authors.last_name = ". $description)
+			// 				->whereRaw(("authors.first_name || authors.last_name LIKE %?%"), array($description))
+			// 				// ->whereRaw("authors.first_name =" $description)
+			// 				// ->orWhereRaw("CONCAT(authors.last_name,' ',authors.first_name) LIKE '%".$description."%'")
+			// 				// ->orWhereRaw("CONCAT(authors.last_name,',',authors.first_name) LIKE '%".$description."%'")
+			// 				// ->groupBy('books.title')
+			// 				// ->orderBy('book.title','desc')
+			// 				->get();
+
+			$books=DB::select(DB::raw("SELECT * FROM books JOIN authored_by JOIN authors ON books.ISBN = authored_by.ISBN AND authored_by.id = authors.id  WHERE authors.last_name = ? "),array($description));
 					return $books;
 	}
 	public function getBooksByIsbn($description) {
