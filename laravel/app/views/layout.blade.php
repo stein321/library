@@ -83,9 +83,19 @@
              }).done(function(result) {
                 console.log(result);
                 $('h4#modalTitle').text(result[0].title);
-                $('div#date_published').text("Date published: " + result[0].date_published );
-                $('div#description').text("Description: " +  result[0].description);
-                $('div#authors').text(result[0].first_name + ' ' + result[0].last_name);
+                $('div#date_published').html("<b>Date published: </b>" + result[0].date_published );
+                $('div#description').html("<b>Description: </b>" +  result[0].description);
+
+                if(result.length > 1) {
+                  $('div#authors').html("<b>Authors: </b>");
+                } 
+                else {
+                  $('div#authors').html("<b>Author: </b>");
+                }
+                var i;
+                for(i=0; i < result.length ; i++) {
+                $('div#authors').append("</br>"+result[i].first_name + ' ' + result[i].last_name);
+              }
                 $('#myModal').modal(result);
              });
 
