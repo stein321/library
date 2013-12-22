@@ -120,8 +120,8 @@ class BookController extends BaseController {
 		}
 		//$books=$this->getBooksFromSearchUsingTitle($description,$search);
 		
-		// return $books;
-		return View::make('books',array('books'=>$books));
+		return $books;
+		// return View::make('books',array('books'=>$books));
 	}
 	public function getBooksByTitle($description,$search) {
 		$books=DB::table('books')
@@ -147,7 +147,7 @@ class BookController extends BaseController {
 			// 				// ->orderBy('book.title','desc')
 			// 				->get();
 
-			$books=DB::select(DB::raw("SELECT * FROM books JOIN authored_by JOIN authors ON books.ISBN = authored_by.ISBN AND authored_by.id = authors.id  WHERE authors.last_name = ? "),array($description));
+			$books=DB::select(DB::raw("SELECT * FROM books JOIN authored_by JOIN authors ON books.ISBN = authored_by.ISBN AND authored_by.id = authors.id  WHERE authors.first_name LIKE '%Mark%' "));
 					return $books;
 	}
 	public function getBooksByIsbn($description) {
