@@ -60,8 +60,11 @@
 <script>
       $(document).ready(function(){
           $("button").click(function(){
+            var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; 
             $.ajax({
                 url: "books",
+                type:"GET",
+                data: formData,
                 context: document.body
             }).done(function(result) {
                  $("div#content").html(result);
@@ -69,7 +72,8 @@
           });
           //when a row is clicked
           $("td#book").click(function(){
-            alert("hello there");
+            var formData = {description:"Tom",criteria:"title"}; //Array 
+            alert(formData.description + " " + formData.criteria);
           });
       });
 </script>

@@ -2,8 +2,15 @@
    
 <body>
         <h1>Book Search</h1>
-            <INPUT TYPE="text" NAME="inputbox" id='searchBox' VALUE=""><P>
+            <input name="inputbox" id='searchBox'>
+            <select id="criteria">
+            		<option value="title">Title</option>
+					<option value="isbn">ISBN</option>
+					<option value="author">Author</option>
+            </select>
             <button>Send</button>
+            
+
 
           <div id="content"></div>
 

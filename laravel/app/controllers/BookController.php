@@ -89,10 +89,10 @@ class BookController extends BaseController {
 	}
 	public function showBooks()
 	{	
-		// $description=Input::get('description');
-		// $criteria=Input::get('criteria');
-			$description='Tom';
-		$criteria='title';
+		$description=Input::get('description');
+		$criteria=Input::get('criteria');
+		// 	$description='Tom';
+		// $criteria='title';
 		
 		switch($criteria) {
 			case 'title':
@@ -115,7 +115,7 @@ class BookController extends BaseController {
 		$books=DB::table('books')
 							 ->leftJoin('authored_by','books.ISBN','=','authored_by.ISBN')
 							 ->leftJoin('authors','authored_by.id','=','authors.id')
-							// ->where('books.'.$search,'LIKE','%'.$description.'%')		
+							 ->where('books.'.$search,'LIKE','%'.$description.'%')		
 							->get();
 					return $books;
 	}
