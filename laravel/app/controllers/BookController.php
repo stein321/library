@@ -110,7 +110,6 @@ class BookController extends BaseController {
 				$books=$this->getBooksByTitle($description,'title');
 			break;
 		   	case 'author':
-		   		// return 6;
 		   		$books=$this->getBooksByAuthor($description);
 		   	break;
 			case 'isbn':
@@ -118,9 +117,7 @@ class BookController extends BaseController {
 			break;
 
 		}
-		//$books=$this->getBooksFromSearchUsingTitle($description,$search);
-		
-		// return $books;
+		// return $books; //for simple testing with jscript console
 		return View::make('books',array('books'=>$books));
 	}
 	public function getBooksByTitle($description,$search) {
