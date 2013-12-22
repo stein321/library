@@ -94,7 +94,7 @@ class BookController extends BaseController {
 							->join('authored_by','books.ISBN','=','authored_by.ISBN')
 							->join('authors','authored_by.id','=','authors.id')
 							->where('books.isbn','=',$isbn)
-							->first();
+							->get();
 
 		return $book;
 	}
