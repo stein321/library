@@ -109,7 +109,7 @@ class BookController extends BaseController {
 		//$books=$this->getBooksFromSearchUsingTitle($description,$search);
 		
 		
-		return View::make('test',array('books'=>$books));
+		return View::make('books',array('books'=>$books));
 	}
 	public function getBooksByTitle($description,$search) {
 		$books=DB::table('books')
