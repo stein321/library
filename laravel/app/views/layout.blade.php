@@ -82,7 +82,7 @@
                 data: data,
              }).done(function(result) {
                 console.log(result);
-                $('h4#modalTitle').text(result[0].title);
+                $('h3#modalTitle').text(result[0].title);
                 $('div#date_published').html("<b>Date published: </b>" + result[0].date_published );
                 $('div#description').html("<b>Description: </b>" +  result[0].description);
 
