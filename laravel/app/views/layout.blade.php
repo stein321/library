@@ -12,7 +12,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
-    <title>Laravel PHP Framework</title>
+    <title>Library</title>
     <style>
         @import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
 

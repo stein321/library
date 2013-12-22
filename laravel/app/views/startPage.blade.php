@@ -8,7 +8,7 @@
 					<option value="isbn">ISBN</option>
 					<option value="author">Author</option>
             </select>
-            <button>Send</button>
+            <button class="btn btn-primary btn-sm" >Send</button>
             
 
 
