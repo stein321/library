@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('book_table')
 @section('content')
 		<table class="table table-striped table-hover">
 			<tr>
@@ -18,7 +18,6 @@
 		    	<td>{{ isset($book->first_name) ? $book->first_name.' '.$book->last_name : 'Default' }}</td> 
 		    	<!-- <td>{{ isset($book->ISBN) ? $book->ISBN : 'Default' }}</td>  -->
 		    	<!-- <td>{{$book->description}}</td>  -->
-		    	
 		    	</tr>
     		@endforeach
     	</table>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('book_table')
 
 @section('content')
 		<table class="table table-bordered">

@@ -52,22 +52,16 @@
             color:#555;
         }
     </style>
-    <script>
-
-       
+<script>
+      $(document).ready(function(){
+          $("button").click(function(){
+            $.ajax({
+                url: "books",
+                context: document.body
+            }).done(function(result) {
+                 $("div#content").html(result);
+              });
+          });
+      });
 </script>
 </head>
-    <body>
-
-		          @yield('content')
-
-    </body>
-</html>
-
-
-
-<?php
-//echo Form::text('search',"Ender's Game");
-//echo Form::select('size', array('title' => 'Book Title', 'isbn' => 'ISBN' ,'author' => 'Author' ));
-//echo Form::submit('Submit');
-?>
