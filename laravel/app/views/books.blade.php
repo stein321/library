@@ -12,12 +12,9 @@
 			
 			@foreach($books as $key=>$book)
 				<tr>
-				<td>{{$key + 1}}</td>
-				<!-- <td>{{ isset($book->id) ? $book->id : 'Default' }}</td>  -->
-		    	<td>{{$book->title}}</td> 
-		    	<td>{{ isset($book->first_name) ? $book->first_name.' '.$book->last_name : 'Default' }}</td> 
-		    	<!-- <td>{{ isset($book->ISBN) ? $book->ISBN : 'Default' }}</td>  -->
-		    	<!-- <td>{{$book->description}}</td>  -->
+				<td id="book" value={{$book->ISBN}}>{{$key + 1}}</td>
+		    	<td id="book" value={{$book->ISBN}}>{{$book->title}}</td> 
+		    	<td id="book" value={{$book->ISBN}}>{{ isset($book->first_name) ? $book->first_name.' '.$book->last_name : 'Default' }}</td> 
 		    	</tr>
     		@endforeach
     	</table>

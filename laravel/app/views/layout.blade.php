@@ -67,6 +67,10 @@
                  $("div#content").html(result);
               });
           });
+          //when a row is clicked
+          $("td#book").click(function(){
+            alert("hello there");
+          });
       });
 </script>
 </head>
