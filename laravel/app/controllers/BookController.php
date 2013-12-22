@@ -126,7 +126,10 @@ class BookController extends BaseController {
 		$books=DB::table('books')
 							 ->leftJoin('authored_by','books.ISBN','=','authored_by.ISBN')
 							 ->leftJoin('authors','authored_by.id','=','authors.id')
-							 ->where('books.'.$search,'LIKE','%'.$description.'%')		
+							 ->where('books.'.$search,'LIKE','%'.$description.'%')	
+							 ->orderBy('books.title','desc')
+							 ->groupBy('books.title')	
+							 
 							->get();
 					return $books;
 	}
@@ -137,6 +140,8 @@ class BookController extends BaseController {
 							->whereRaw("CONCAT(authors.first_name,' ',authors.last_name) LIKE '%".$description."%'")
 							->orWhereRaw("CONCAT(authors.last_name,' ',authors.first_name) LIKE '%".$description."%'")
 							->orWhereRaw("CONCAT(authors.last_name,',',authors.first_name) LIKE '%".$description."%'")
+							// ->groupBy('books.title')
+							// ->orderBy('book.title','desc')
 							->get();
 					return $books;
 	}
@@ -145,6 +150,8 @@ class BookController extends BaseController {
 							->join('authored_by','books.ISBN','=','authored_by.ISBN')
 							->join('authors','authored_by.id','=','authors.id')
 							->where('books.isbn','=',$description)
+							->groupBy('books.title')
+							// ->orderBy('book.title','desc')
 							->get();
 					return $books;
 
