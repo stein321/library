@@ -61,14 +61,13 @@
       $(document).ready(function(){
           $("button").click(function(){
             var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; //Array 
-            console.log(formData.criteria)
             $.ajax({
                 url: "books",
                 type:"GET",
                 data: formData,
                 context: document.body
             }).done(function(result) {
-              console.log(result);
+              // console.log(result);
                  $("div#content").html(result);
               });
           });
@@ -83,10 +82,20 @@
                 data: data,
              }).done(function(result) {
                 console.log(result);
-                console.log(result[0]);
+                $('h4#modalTitle').text(result[0].title);
+                $('div#date_published').text("Date published: " + result[0].date_published );
+                $('div#description').text("Description: " +  result[0].description);
+                $('div#authors').text(result[0].first_name + ' ' + result[0].last_name);
+                $('#myModal').modal(result);
              });
 
           });
       });
 </script>
 </head>
+<!-- Button trigger modal -->
+<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+
