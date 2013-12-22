@@ -68,7 +68,6 @@
 </head>
     <body>
         <h1>Laravel Quickstart</h1>
-        <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
             <INPUT TYPE="text" NAME="inputbox" id='searchBox' VALUE=""><P>
             <button>Send</button>
 
