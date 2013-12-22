@@ -61,14 +61,15 @@
       $(document).ready(function(){
           $("button").click(function(){
             var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; //Array 
+            console.log(formData.criteria)
             $.ajax({
                 url: "books",
                 type:"GET",
                 data: formData,
                 context: document.body
             }).done(function(result) {
+              console.log(result);
                  $("div#content").html(result);
-                  alert(formData.description + " " + formData.criteria);// just for checking content of box
               });
           });
           //when a row is clicked

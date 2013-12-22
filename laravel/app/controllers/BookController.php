@@ -110,17 +110,18 @@ class BookController extends BaseController {
 				$books=$this->getBooksByTitle($description,'title');
 			break;
 		   	case 'author':
+		   		// return 6;
 		   		$books=$this->getBooksByAuthor($description);
+		   	break;
 			case 'isbn':
 				$books=$this->getBooksByIsbn($description);
 			break;
 
-			default: return ;
 		}
 		//$books=$this->getBooksFromSearchUsingTitle($description,$search);
 		
-		
-		return View::make('books',array('books'=>$books));
+		return $books;
+		// return View::make('books',array('books'=>$books));
 	}
 	public function getBooksByTitle($description,$search) {
 		$books=DB::table('books')
@@ -135,11 +136,11 @@ class BookController extends BaseController {
 	}
 	public function getBooksByAuthor($description) {
 			$books=DB::table('books')
-							->join('authored_by','books.ISBN','=','authored_by.ISBN')
-							->join('authors','authored_by.id','=','authors.id')
-							->whereRaw("CONCAT(authors.first_name,' ',authors.last_name) LIKE '%".$description."%'")
-							->orWhereRaw("CONCAT(authors.last_name,' ',authors.first_name) LIKE '%".$description."%'")
-							->orWhereRaw("CONCAT(authors.last_name,',',authors.first_name) LIKE '%".$description."%'")
+							->leftJoin('authored_by','books.ISBN','=','authored_by.ISBN')
+							->leftJoin('authors','authored_by.id','=','authors.id')
+							->whereRaw("CONCAT(authors.first_name,' ',authors.last_name) LIKE '%"."Mark"."%'")
+							// ->orWhereRaw("CONCAT(authors.last_name,' ',authors.first_name) LIKE '%".$description."%'")
+							// ->orWhereRaw("CONCAT(authors.last_name,',',authors.first_name) LIKE '%".$description."%'")
 							// ->groupBy('books.title')
 							// ->orderBy('book.title','desc')
 							->get();
