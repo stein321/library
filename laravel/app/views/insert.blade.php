@@ -1,7 +1,4 @@
 @extends('newlayout')
-
-
-
 <form action='insert' method='GET'>
 
 		Title:<input type="text" name="title">

@@ -60,7 +60,7 @@
 <script>
       $(document).ready(function(){
           $("button").click(function(){
-            var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; 
+            var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; //Array 
             $.ajax({
                 url: "books",
                 type:"GET",
@@ -68,12 +68,23 @@
                 context: document.body
             }).done(function(result) {
                  $("div#content").html(result);
+                  alert(formData.description + " " + formData.criteria);// just for checking content of box
               });
           });
           //when a row is clicked
           $("td#book").click(function(){
-            var formData = {description:"Tom",criteria:"title"}; //Array 
-            alert(formData.description + " " + formData.criteria);
+           
+            var data = {isbn: $(this).attr('value')};
+             
+             $.ajax({
+                url:"get_a_book",
+                type:"GET",
+                data: data,
+             }).done(function(result) {
+                console.log(result);
+                console.log(result[0]);
+             });
+
           });
       });
 </script>

@@ -20,6 +20,7 @@ Route::any('test', function()
 {
     return 'Hello World';
 });
+Route::get('get_a_book', "BookController@GrabBook");
 Route::get('books', 'BookController@ShowBooks');
 Route::get('insert', 'BookController@InsertBooks');
 Route::get('insertBook', 'BookController@InsertThisBook');

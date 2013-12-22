@@ -87,6 +87,17 @@ class BookController extends BaseController {
 
 
 	}
+	public function grabBook() {
+		$isbn=Input::get('isbn');
+
+		$book=DB::table('books')
+							->join('authored_by','books.ISBN','=','authored_by.ISBN')
+							->join('authors','authored_by.id','=','authors.id')
+							->where('books.isbn','=',$isbn)
+							->first();
+
+		return $book;
+	}
 	public function showBooks()
 	{	
 		$description=Input::get('description');
