@@ -57,16 +57,8 @@
        
 </script>
 </head>
-<div class="trigger">Trigger</div>
-<div class="result"></div>
-<div class="log"></div>
-
     <body>
-     <!--    <h1>Laravel Quickstart</h1>
-		<FORM  ACTION="books" METHOD="GET">Enter something in the box: <BR>
-            <INPUT TYPE="text" NAME="inputbox" id='searchBox' VALUE=""><P>
-            <Input type="submit">
-          </Form> -->
+
 		          @yield('content')
 
     </body>
