@@ -1,6 +1,6 @@
 @extends('book_table')
 @section('content')
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover ">
 			<tr>
 			<td>Number</td>
 			<!-- <td>Author ID</td> -->

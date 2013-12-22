@@ -51,6 +51,11 @@
             margin:2em 0;
             color:#555;
         }
+        table {
+          max-width: 50%;
+          margin-right: auto;
+          margin-left: auto;
+        }
     </style>
 <script>
       $(document).ready(function(){
