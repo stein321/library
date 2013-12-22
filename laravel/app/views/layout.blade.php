@@ -59,7 +59,16 @@
     </style>
 <script>
       $(document).ready(function(){
-          $("button").click(function(){
+          
+
+          $("button").click(function() {
+              PrintTable();
+            });
+
+
+
+
+            function PrintTable(){
             var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; //Array 
             $.ajax({
                 url: "books",
@@ -67,10 +76,11 @@
                 data: formData,
                 context: document.body
             }).done(function(result) {
-              // console.log(result);
                  $("div#content").html(result);
-              });
-          });
+              }); 
+          }
+
+
           //when a row is clicked
           $("td#book").click(function(){
            
@@ -84,7 +94,7 @@
                 console.log(result);
                 $('h3#modalTitle').text(result[0].title);
                 $('div#date_published').html("<b>Date published: </b>" + result[0].date_published );
-                $('div#description').html("<b>Description: </b>" +  result[0].description);
+                $('div#description').html("<b>Description: " +  result[0].description);
 
                 if(result.length > 1) {
                   $('div#authors').html("<b>Authors: </b>");
