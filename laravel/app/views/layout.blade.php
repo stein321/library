@@ -64,11 +64,13 @@
           $("button").click(function() {
               PrintTable();
             });
-
-
-
-
-            function PrintTable(){
+          $(document).keypress(function(e) {
+              if(e.which == 13) {
+                  PrintTable();
+              }
+          });
+          
+          function PrintTable(){
             var formData = {description: document.getElementById("searchBox").value ,criteria:document.getElementById("criteria").value}; //Array 
             $.ajax({
                 url: "books",
